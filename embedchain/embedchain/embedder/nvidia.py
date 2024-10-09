@@ -19,7 +19,7 @@ class NvidiaEmbedder(BaseEmbedder):
         super().__init__(config=config)
 
         model = self.config.model or "nvolveqa_40k"
-        logger.info(f"Using NVIDIA embedding model: {model}")
+        logger.info("Using NVIDIA embedding model", model=model)
         embedder = NVIDIAEmbeddings(model=model)
         embedding_fn = BaseEmbedder._langchain_default_concept(embedder)
         self.set_embedding_fn(embedding_fn=embedding_fn)
