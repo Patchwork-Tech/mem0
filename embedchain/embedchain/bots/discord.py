@@ -61,7 +61,7 @@ class DiscordBot(BaseBot):
 async def query_command(interaction: discord.Interaction, question: str):
     await interaction.response.defer()
     member = client.guilds[0].get_member(client.user.id)
-    logger.info(f"User: {member}, Query: {question}")
+    logger.info("User query received", user=member, query=question)
     try:
         answer = discord_bot.ask_bot(question)
         if args.include_question:
