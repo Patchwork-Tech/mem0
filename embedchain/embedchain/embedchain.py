@@ -217,7 +217,7 @@ class EmbedChain(JSONSerializable):
 
         if dry_run:
             data_chunks_info = {"chunks": documents, "metadata": metadatas, "count": len(documents), "type": data_type}
-            logger.debug(f"Dry run info : {data_chunks_info}")
+            logger.debug("Dry run info", data_chunks_info=data_chunks_info)
             return data_chunks_info
 
         # Send anonymous telemetry
