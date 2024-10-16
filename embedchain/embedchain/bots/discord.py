@@ -61,7 +61,7 @@ class DiscordBot(BaseBot):
 async def query_command(interaction: discord.Interaction, question: str):
     await interaction.response.defer()
     member = client.guilds[0].get_member(client.user.id)
-    logger.info(f"User: {member}, Query: {question}")
+    logger.info("User query received", user=member, query=question)
     try:
         answer = discord_bot.ask_bot(question)
         if args.include_question:
@@ -78,7 +78,7 @@ async def query_command(interaction: discord.Interaction, question: str):
 async def add_command(interaction: discord.Interaction, url_or_text: str):
     await interaction.response.defer()
     member = client.guilds[0].get_member(client.user.id)
-    logger.info(f"User: {member}, Add: {url_or_text}")
+    logger.info("User add command", member=member, url_or_text=url_or_text)
     try:
         response = discord_bot.add_data(url_or_text)
         await interaction.followup.send(response)
