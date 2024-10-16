@@ -175,9 +175,7 @@ class EmbedChain(JSONSerializable):
             try:
                 data_type = DataType(data_type)
             except ValueError:
-                logger.info(
-                    f"Invalid data_type: '{data_type}', using `custom` instead.\n Check docs to pass the valid data type: `https://docs.embedchain.ai/data-sources/overview`"  # noqa: E501
-                )
+                logger.warning("Invalid data_type provided, using 'custom' instead", data_type=data_type, docs_url="https://docs.embedchain.ai/data-sources/overview")
                 data_type = DataType.CUSTOM
 
         if not data_type:
