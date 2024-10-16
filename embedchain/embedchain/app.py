@@ -281,7 +281,7 @@ class App(EmbedChain):
                 metadata = {"file_path": data_value, "s3_key": s3_key}
                 data_value = presigned_url
             else:
-                logger.error(f"File upload failed for hash: {data_hash}")
+                logger.error("File upload failed", data_hash=data_hash)
                 return False
         else:
             if data_type == "qna_pair":
