@@ -281,7 +281,7 @@ class App(EmbedChain):
                 metadata = {"file_path": data_value, "s3_key": s3_key}
                 data_value = presigned_url
             else:
-                logger.error(f"File upload failed for hash: {data_hash}")
+                logger.error("File upload failed", data_hash=data_hash)
                 return False
         else:
             if data_type == "qna_pair":
@@ -483,7 +483,7 @@ class App(EmbedChain):
             EvalMetric.GROUNDEDNESS.value,
         ]
 
-        logger.info(f"Collecting data from {len(queries)} questions for evaluation...")
+        logger.info("Collecting data for evaluation", num_questions=len(queries), num_answers=len(answers), num_contexts=len(contexts), metrics=metrics)
         dataset = []
         for q, a, c in zip(queries, answers, contexts):
             dataset.append(EvalData(question=q, answer=a, contexts=c))
