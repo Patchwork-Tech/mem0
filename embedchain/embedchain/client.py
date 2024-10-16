@@ -93,7 +93,7 @@ class Client:
             return True
         else:
             logger.warning(f"Response from API: {response.text}")
-            logger.warning("Invalid API key. Unable to validate.")
+            logger.warning("Invalid API key. Unable to validate.", validation_url=validation_url, http_method="POST", status_code=response.status_code)
             return False
 
     def get(self):
