@@ -483,12 +483,12 @@ class App(EmbedChain):
             EvalMetric.GROUNDEDNESS.value,
         ]
 
-        logger.info(f"Collecting data from {len(queries)} questions for evaluation...")
+        logger.info("Collecting data for evaluation", num_questions=len(queries))
         dataset = []
         for q, a, c in zip(queries, answers, contexts):
             dataset.append(EvalData(question=q, answer=a, contexts=c))
 
-        logger.info(f"Evaluating {len(dataset)} data points...")
+        logger.info("Evaluating data points", count=len(dataset), metrics=metrics)
         result = {}
         with concurrent.futures.ThreadPoolExecutor(max_workers=num_workers) as executor:
             future_to_metric = {executor.submit(self._eval, dataset, metric): metric for metric in metrics}
